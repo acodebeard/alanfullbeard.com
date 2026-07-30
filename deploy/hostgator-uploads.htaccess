@@ -1,6 +1,6 @@
 Options -Indexes
 
-<FilesMatch "\.(?:php[0-9]?|phtml|phar)$">
+<FilesMatch "\.(?:php[0-9]?|phtml|phar)(?:\.|$)">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
