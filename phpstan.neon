@@ -13,6 +13,10 @@ parameters:
     - deploy/contact-vault-backup-stream-lib.php
     - deploy/migrate-hostgator-contact-vault.php
     - deploy/purge-hostgator-flamingo-contacts.php
+    - deploy/hostgator-portfolio-page-lib.php
+    - deploy/dry-run-hostgator-portfolio-page.php
+    - deploy/create-hostgator-portfolio-page.php
+    - deploy/rollback-hostgator-portfolio-page.php
     - stubs/flamingo.stub
   paths:
     - app
