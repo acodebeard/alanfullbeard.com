@@ -442,6 +442,7 @@ img {
 
 .site-nav__toggle[aria-expanded="true"] .site-nav__toggle-icon span:last-child {
   transform: translateY(-25px);
+
   background: var(--color-system-ops);
 }
 
