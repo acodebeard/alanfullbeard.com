@@ -52,31 +52,26 @@ function afb_portfolio_page_preflight(): array
             'relative' => '2026/07/redmeat-screen.webp',
             'sha256' => '24a6a597f868a4253ffbc8fa1b0ca0404ce495c4ebf6859615560a2a3bbac180',
             'url' => 'https://alanfullbeard.com/wp-content/uploads/2026/07/redmeat-screen.webp',
-            'alt' => 'Screenshot of Redmeat',
         ],
         86 => [
             'relative' => '2026/07/newtimes-screen.webp',
             'sha256' => '21f5022c7bdaaaeadfc7b46a94e69f0546dbedb4a225d0cede87ea6096399376',
             'url' => 'https://alanfullbeard.com/wp-content/uploads/2026/07/newtimes-screen.webp',
-            'alt' => 'Screenshot of the Phoenix New Times website',
         ],
         87 => [
             'relative' => '2026/07/laffs-screen.webp',
             'sha256' => 'c249363862a3bd9d1d41307e22d73ffe2f9d97cc56a567e992e25c8a161d0b97',
             'url' => 'https://alanfullbeard.com/wp-content/uploads/2026/07/laffs-screen.webp',
-            'alt' => 'Screenshot of Laffs Comedy Cafe',
         ],
         88 => [
             'relative' => '2026/07/dkc-screen.webp',
             'sha256' => 'febae764ce80f00a7c47acd78d401f670baf6c7f7af402f632458defffdbbb67',
             'url' => 'https://alanfullbeard.com/wp-content/uploads/2026/07/dkc-screen.webp',
-            'alt' => 'Screenshot of Destination Kona Coast',
         ],
         89 => [
             'relative' => '2026/07/aaa-screen.webp',
             'sha256' => 'b8376e509c75a4576318fb0049b710203b1dd2b11fba9b9995bfa9e33700c152',
             'url' => 'https://alanfullbeard.com/wp-content/uploads/2026/07/aaa-screen.webp',
-            'alt' => 'Screenshot of AAA Gas & Plumbing',
         ],
     ];
 
@@ -123,12 +118,6 @@ function afb_portfolio_page_preflight(): array
             );
         }
 
-        $alt = get_post_meta($attachmentId, '_wp_attachment_image_alt', true);
-        if (! is_string($alt) || $alt !== $expected['alt']) {
-            throw new RuntimeException(
-                sprintf('Attachment %d alternative text is unexpected.', $attachmentId)
-            );
-        }
     }
 
     $contentBlocks = array_values(
@@ -143,11 +132,31 @@ function afb_portfolio_page_preflight(): array
     }
 
     $expectedCards = [
-        ['heading' => 'Phoenix New Times', 'imageId' => 86],
-        ['heading' => 'Destination Kona Coast', 'imageId' => 88],
-        ['heading' => 'Red Meat', 'imageId' => 85],
-        ['heading' => 'AAA Gas & Plumbing', 'imageId' => 89],
-        ['heading' => 'Laffs Comedy Caffé', 'imageId' => 87],
+        [
+            'heading' => 'Phoenix New Times',
+            'imageId' => 86,
+            'imageAlt' => 'Screenshot of the Phoenix New Times website',
+        ],
+        [
+            'heading' => 'Destination Kona Coast',
+            'imageId' => 88,
+            'imageAlt' => 'Screenshot of Destination Kona Coast',
+        ],
+        [
+            'heading' => 'Red Meat',
+            'imageId' => 85,
+            'imageAlt' => 'Screenshot of Redmeat',
+        ],
+        [
+            'heading' => 'AAA Gas & Plumbing',
+            'imageId' => 89,
+            'imageAlt' => 'Screenshot of AAA Gas & Plumbing',
+        ],
+        [
+            'heading' => 'Laffs Comedy Caffé',
+            'imageId' => 87,
+            'imageAlt' => 'Screenshot of Laffs Comedy Cafe',
+        ],
     ];
 
     foreach ($expectedCards as $index => $expectedCard) {
@@ -157,6 +166,7 @@ function afb_portfolio_page_preflight(): array
             || $block['blockName'] !== 'alanfullbeard/portfolio-card'
             || ($block['attrs']['heading'] ?? null) !== $expectedCard['heading']
             || (int) ($block['attrs']['imageId'] ?? 0) !== $expectedCard['imageId']
+            || ($block['attrs']['imageAlt'] ?? null) !== $expectedCard['imageAlt']
             || ! filter_var($block['attrs']['linkUrl'] ?? '', FILTER_VALIDATE_URL)
         ) {
             throw new RuntimeException(
