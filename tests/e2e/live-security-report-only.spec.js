@@ -1,12 +1,12 @@
 const { test, expect } = require('@playwright/test');
 
-const liveReportOnlyUrl = process.env.AFB_SECURITY_REPORT_ONLY_URL;
+const liveSecurityUrl = process.env.AFB_SECURITY_REPORT_ONLY_URL;
 
-test.describe('live report-only security-header audit', () => {
-  test.skip(!liveReportOnlyUrl, 'AFB_SECURITY_REPORT_ONLY_URL is not set.');
+test.describe('live security-policy audit', () => {
+  test.skip(!liveSecurityUrl, 'AFB_SECURITY_REPORT_ONLY_URL is not set.');
 
-  for (const pagePath of ['/', '/contact/', '/privacy-policy/']) {
-    test(`${pagePath} has no report-only policy violations`, async ({ page }) => {
+  for (const pagePath of ['/', '/contact/', '/privacy-policy/', '/portfolio/']) {
+    test(`${pagePath} has no security-policy violations`, async ({ page }) => {
       const diagnostics = [];
 
       await page.addInitScript(() => {
@@ -54,7 +54,7 @@ test.describe('live report-only security-header audit', () => {
         diagnostics.push(`page error: ${error.message}`);
       });
 
-      const url = new URL(pagePath, liveReportOnlyUrl).href;
+      const url = new URL(pagePath, liveSecurityUrl).href;
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
       expect(response).not.toBeNull();
       await page.waitForTimeout(5000);
@@ -62,11 +62,12 @@ test.describe('live report-only security-header audit', () => {
       const headers = response.headers();
       const reportOnly = headers['content-security-policy-report-only'] || '';
       const enforced = headers['content-security-policy'] || '';
+      const activePolicy = reportOnly || enforced;
 
       expect(headers['cross-origin-opener-policy']).toBe('same-origin');
       expect(headers['x-frame-options']).toBe('SAMEORIGIN');
-      expect(reportOnly).toContain("script-src 'nonce-");
-      expect(reportOnly).toContain("require-trusted-types-for 'script'");
+      expect(activePolicy).toContain("script-src 'nonce-");
+      expect(activePolicy).toContain("require-trusted-types-for 'script'");
       expect(enforced).toContain('upgrade-insecure-requests');
 
       const violations = await page.evaluate(

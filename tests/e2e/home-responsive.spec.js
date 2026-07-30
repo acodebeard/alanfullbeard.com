@@ -91,7 +91,7 @@ for (const viewport of [
 
     await expect(page.locator('#alanfullbeard-lcars-style-css')).toHaveAttribute(
       'href',
-      /\/style\.css(?:\?|$)/
+      /\/style(?:\.min)?\.css(?:\?|$)/
     );
 
     const label = page.locator('.home-experience__label');

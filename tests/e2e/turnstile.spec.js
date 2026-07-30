@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 for (const [pageName, pagePath] of [
   ['Home', './'],
   ['Privacy Policy', './privacy-policy/'],
+  ['Portfolio', './portfolio/'],
 ]) {
   test(`Turnstile does not load on the ${pageName} page`, async ({ page }) => {
     const turnstileRequests = [];

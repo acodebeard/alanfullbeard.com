@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-for (const pagePath of ['./', './contact/', './privacy-policy/']) {
+for (const pagePath of ['./', './contact/', './privacy-policy/', './portfolio/']) {
   test(`${pagePath} has basic search and social metadata`, async ({ page }) => {
     await page.goto(pagePath);
 
