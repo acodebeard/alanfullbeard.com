@@ -1,0 +1,11 @@
+# These active sites already have separate checksum-exact local source copies.
+- /photosbyalan/
+- /set-list-sites/
+- /website_7c2f4efd/
+
+# Broken/retired or hosting-specific roots are outside the production payload.
+- /demo.setlistsites.com/
+- /cgi-bin/
+
+# Legacy Red Meat authentication material does not belong to this site backup.
+- /.htpasswd-redmeat

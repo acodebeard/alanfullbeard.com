@@ -1,0 +1,23 @@
+{
+  "name": "alanfullmer/alanfullbeard",
+  "description": "WordPress site for alanfullbeard.com.",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "paragonie/sodium_compat": "^2.5"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.2",
+    "szepeviktor/phpstan-wordpress": "^2.0"
+  },
+  "autoload": {
+    "files": [
+      "app/Site.php"
+    ]
+  },
+  "scripts": {
+    "test": "php tests/SiteTest.php && php tests/WordPressSetupTest.php && php tests/WaypointsPluginTest.php && php tests/TurnstileTest.php && php tests/FileHubTest.php && php tests/ContactVaultTest.php && php tests/ContactVaultBackupStreamTest.php && php tests/SecurityHeadersTest.php",
+    "test:contact-vault-wp": "PATH=/opt/lampp/bin:$PATH /opt/lampp/bin/php tests/ContactVaultWordPressIntegrationTest.php",
+    "phpstan": "phpstan analyse --configuration phpstan.neon --no-progress"
+  }
+}

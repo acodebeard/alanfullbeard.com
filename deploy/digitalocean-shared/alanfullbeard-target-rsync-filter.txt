@@ -1,0 +1,21 @@
+# Install reviewed target files separately.
+- /.htaccess
+- /.user.ini
+- /php.ini
+- /wp-config.php
+- /filehub/
+
+# HostGator runtime and log artifacts do not belong in the target payload.
+- /error_log
+- /cgi-bin/
+
+# These sites already have separate reviewed target deployments.
+- /photosbyalan/
+- /set-list-sites/
+- /website_7c2f4efd/
+
+# Broken/retired roots are outside the production payload.
+- /demo.setlistsites.com/
+
+# Legacy authentication material must remain only in the private source backup.
+- /.htpasswd-redmeat

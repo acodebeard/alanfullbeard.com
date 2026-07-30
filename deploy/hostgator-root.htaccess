@@ -1,0 +1,115 @@
+# Preserve the legacy Red Meat traversal guard before any redirects.
+RewriteEngine On
+RewriteCond %{THE_REQUEST} "^\S+\s/+redmeat/\.\./" [NC]
+RewriteRule ^ - [F]
+RewriteCond %{THE_REQUEST} "(?:%2e){2}" [NC]
+RewriteRule ^ - [F]
+RewriteRule ^redmeat/\.\.(?:/|$) - [F]
+
+# Keep the static deployment health check directly reachable.
+RewriteCond %{THE_REQUEST} \s/health\.txt [NC]
+RewriteRule ^ - [L]
+
+# Force HTTPS only for the main alanfullbeard.com vhost.
+RewriteCond %{HTTP_HOST} ^(www\.)?alanfullbeard\.com$ [NC]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Serve existing protected applications and mapped site roots directly.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# WordPress front controller for main-domain routes.
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# Preserve HSTS for the main site and HTTPS child vhosts rooted below public_html.
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header always setifempty Content-Security-Policy "upgrade-insecure-requests; block-all-mixed-content"
+</IfModule>
+
+# Long-lived immutable assets.
+<IfModule mod_expires.c>
+  ExpiresActive On
+</IfModule>
+<FilesMatch "\.(woff2)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </IfModule>
+  ExpiresDefault "access plus 1 year"
+</FilesMatch>
+<FilesMatch "\.(webp|avif|png|jpg|jpeg|gif|svg)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </IfModule>
+  ExpiresDefault "access plus 1 year"
+</FilesMatch>
+
+# Dynamic documents must be revalidated.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:html|php)$">
+    Header set Cache-Control "max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+FileETag MTime Size
+
+# Never list directories or serve sensitive project/runtime files.
+Options -Indexes
+<FilesMatch "(^error_log$|^wp-config\.php$|^xmlrpc\.php$|^readme\.html$|^license\.txt$|\.(log|sql|sqlite|db|bak|old|orig|save|swp|env|key|pem)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
+RedirectMatch 404 "(^|/)\.(?!well-known(?:/|$))"
+RedirectMatch 404 "(^|/)audit\.php$"
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php82” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor.
+<IfModule php8_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 256M
+   php_value post_max_size 12M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php82"
+   php_value upload_max_filesize 10M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 30
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit 256M
+   php_value post_max_size 12M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/var/cpanel/php/sessions/ea-php82"
+   php_value upload_max_filesize 10M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit

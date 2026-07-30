@@ -1,0 +1,275 @@
+:root {
+  --form-green: #006300;
+  --form-red: #8a2301;
+}
+
+fieldset {
+  padding: 0;
+  margin:0;
+  border: 0 none;
+}
+.form-offscreen {
+  position: absolute;
+  left: -99999rem;
+}
+.form-heading {
+  font-family: var(--form-font-family);
+}
+.form-heading span {
+  font-size: .8rem;
+  line-height: 1;
+}
+.form {
+  width: min(550px, 100%);
+  padding: var(--gap-medium);
+  background-color: #f3f3f3;
+  margin: auto;
+  font-family: var(--form-font-family);
+}
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form input[type="number"],
+.form input[type="password"] {
+  transition: var(--transition-global);
+  height: 42px; /* It's the answer */
+  padding:var(--gap-small);
+  font-size: 20px;
+  touch-action: manipulation;
+  font-family: var(--form-font-family);
+  font-weight: 400;
+  width: 100%;
+  max-width: 100%;
+  border: thin solid #333;
+  border-radius: 8px;
+}
+.form-row {
+  margin: 0 ;
+  display: flex;
+  gap:var(--gap-medium);
+  min-width: calc(100% - var(--gap-medium));
+}
+.form-row:nth-child(n+2) {
+  margin: var(--gap-large) 0 0;
+}
+.form-row [class*='-status'] {
+  flex:none;
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 1000px;
+  margin:auto;
+  position: relative;
+}
+.form-row.gap-xsmall {
+  gap:var(--gap-xsmall);
+}
+.form-row.gap-small {
+  gap:var(--gap-small);
+}
+.form-row.margin-top-xlarge {
+  margin-top: var(--gap-xlarge);
+}
+.form-row .phone-status,
+.form-row .username-status,
+.form-row .email-status {
+  margin: auto 0 8px auto;
+}
+.form-row .password-status.mismatch,
+.form-row .username-status.is-taken {
+  background:url('../images/icons/xmark-solid-full.svg?g=f') center no-repeat #fffe ;
+  background-size: 25px;
+}
+
+.form-row .username-status.is-taken:before {
+    content: "Username Taken!";
+}
+.form-row .username-status.is-checking:before {
+  content: "Checking that...";
+}
+.form-row .username-status.is-taken:before,
+.form-row .username-status.is-checking:before {
+  position: absolute;
+  display: block;
+  top: -28px;
+  right: 0;
+  width: 150px;
+  text-align: right;
+  font-size: 14px;
+}
+.form-row .username-status.is-available,
+.form-row .password-status.valid,
+.form-row .phone-status.valid,
+.form-row .email-status.valid,
+.form-row .name-status.one-valid {
+  background:url('../images/icons/check-solid-full.svg?g=f') center no-repeat #fffe ;
+  background-size: 25px;
+}
+.form-row .name-status.two-valid {
+  background:url('../images/icons/check-double-solid-full.svg?f=e') center no-repeat #fffe ;
+  background-size: 25px;
+}
+.form-row.form-row-phone input.partial-valid {
+    border-color: #c73522;
+    border-width: 2px;
+}
+.form-label {
+  font-weight: 700;
+  color: #000;
+  font-size: 1.3rem;
+}
+.form-label i {
+  font-size: .7em;
+  color: #595959;
+  font-weight: 400;
+}
+.form-label .form-error {
+  margin-left: auto;
+  margin-right: 55px;
+  font-size: 13px;
+  font-weight: 400;
+  padding-left: 3px;
+}
+@media (width <= 440px) {
+  .form-label .form-error {
+    margin-right: 15px;
+  }
+}
+.form-label-sub {
+  font-size: 1.1rem;
+}
+#area_code,
+#prefix {
+  width: 70px;
+  text-align: center;
+}
+#suffix {
+  width: 85px;
+  text-align: center;
+}
+
+.form-label-button {
+  display: inline-flex;
+  padding: var(--gap-small);
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #222;
+  border-radius: 5px;
+  transition: 188ms ease;
+  height: 32px;
+}
+input:checked + .form-label-button,
+input:checked:focus + .form-label-button,
+.form-label-button:hover {
+  background: var(--form-green);
+  color: #fff;
+}
+input:checked:focus + .form-label-button {
+  outline: thin solid #000;
+}
+input:checked + .form-label-button[for='no_text'] {
+  background: var(--form-red);
+}
+.text-negative {
+  color: var(--form-red);
+}
+.form-footer #form-submit {
+  background: #fff;
+  border: 0 none;
+  padding: var(--gap-medium) var(--gap-large);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .06ch;
+  border-radius: 3px;
+  margin-left: auto;
+  color: #111;
+  transition: var(--transition-global);
+}
+.form-footer #form-submit:hover,
+.form-footer #form-submit:focus {
+  background: var(--form-green);
+}
+.form-footer .btn-clear-draft {
+  background:none;
+  border:0 none;
+  font-size: 15px;
+  padding: 0;
+  color: #333;
+  transition: var(--transition-global);
+}
+.form-footer .btn-clear-draft:hover,
+.form-footer .btn-clear-draft:focus {
+  text-decoration: underline;
+}
+@media (width <= 630px) {
+  .form-label-button {
+    font-size: 14px;
+    width: 200px;
+  }
+  .form-labels {
+    justify-content: center;
+  }
+  .form-footer button {
+    font-size: 1.1rem;
+    padding: var(--gap-small) var(--gap-medium);
+  }
+  .form #area_code,
+  .form #prefix {
+  width: 60px;
+  font-size: 18px;
+}
+.form #suffix {
+  width: 75px;
+  font-size: 18px;
+}
+}
+section#theGreatSampleForm {
+
+  position: relative;
+}
+section#theGreatSampleForm:before {
+  content: "Thanks! Looks good!";
+  opacity: 0;
+  pointer-events: none;
+}
+section#theGreatSampleForm.form-processing:before {
+  content: "Thanks! Looks good!";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  position: absolute;
+  inset: -18px;
+  opacity: 1;
+  transition: var(--transition-global);
+  z-index: 100;
+}
+.success-panel {
+  position: relative;
+  z-index: 5;
+}
+.success-panel h3 {
+  font-family: var(--form-font-family);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.success-panel p {
+  margin: var(--gap-small) var(--gap-xsmall);
+  font-size: 1.3rem;
+  color: #333;
+}
+.pineapple-img {
+  min-width: 45px;
+  width: 45px;
+}
+.pineapple-img img {
+  rotate: -16deg;
+  filter: drop-shadow(-1px 4px 2px #d941055b);
+}
+.success-panel p.disclaimer {
+  padding-top: 12px;
+  border-top: thin solid #ddd;
+  font-weight: 700;
+  font-size: 1.1rem;
+}

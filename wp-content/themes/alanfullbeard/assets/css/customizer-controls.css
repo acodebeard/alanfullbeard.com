@@ -1,0 +1,45 @@
+.alanfullbeard-link-repeater {
+  display: grid;
+  gap: 10px;
+}
+
+.alanfullbeard-link-repeater__rows {
+  display: grid;
+  gap: 10px;
+}
+
+.alanfullbeard-link-repeater__row {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #c3c4c7;
+  background: #fff;
+}
+
+.alanfullbeard-link-repeater__field {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.alanfullbeard-link-repeater__field input {
+  width: 100%;
+  font-weight: 400;
+}
+
+.alanfullbeard-link-repeater__remove {
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  min-height: 30px;
+  color: #b32d2e;
+}
+
+.alanfullbeard-link-repeater__remove:hover,
+.alanfullbeard-link-repeater__remove:focus {
+  color: #8a2424;
+}
+
+.alanfullbeard-link-repeater__add {
+  justify-self: start;
+}

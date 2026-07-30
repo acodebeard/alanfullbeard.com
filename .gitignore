@@ -1,0 +1,72 @@
+vendor/
+node_modules/
+.env
+.env.*
+!.env.example
+.superpowers/
+
+# Local browser-test output.
+/playwright-report/
+/test-results/
+/.local-backups/
+
+# Credentials, private data, and deployment/runtime artifacts.
+*.afbenc
+*.log
+*.pem
+*.key
+*.zip
+*.sql
+*.sql.gz
+/filehub_data/
+/private-config/
+/security-hardening-backups/
+/security-quarantine/
+/security-staging/
+/deployments/
+/deploy/**/wordpress-secrets.json
+!/deploy/**/wordpress-secrets.example.json
+/deploy/**/*.pub
+/.git-legacy-*/
+
+# WordPress.org dependencies are installed and updated separately.
+/wp-content/plugins/contact-form-7/
+/wp-content/plugins/flamingo/
+/wp-content/plugins/cf7-antispam/
+
+# Shared migration artifacts owned by other sites do not belong in this repo.
+/deploy/digitalocean-shared/CANDIDATE-SHA256SUMS
+/deploy/digitalocean-shared/audit-digitalocean-launch-readonly.sh
+/deploy/digitalocean-shared/dkc-*
+/deploy/digitalocean-shared/photosbyalan*
+/deploy/digitalocean-shared/prepare-isolated-runtime.sh
+/deploy/digitalocean-shared/redmeat*
+/deploy/digitalocean-shared/setlistsites*
+/deploy/digitalocean-shared/viazen*
+
+# WordPress core is installed locally. Source tracks wp-content only.
+/.htaccess
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+/wp-admin/
+/wp-includes/
+
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/debug.log
+.maintenance
+public/assets/css/*.min.css
+
+# Source-only repository: keep local media out of git.
+public/assets/images/*
+!public/assets/images/.gitkeep
+!public/assets/images/README.md
+!public/assets/images/icons/
+public/assets/images/icons/*
+!public/assets/images/icons/.gitkeep
+!public/assets/images/icons/README.md

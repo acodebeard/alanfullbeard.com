@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "alanfullbeard/portfolio-card",
+  "version": "1.0.0",
+  "title": "LCARS Portfolio Card",
+  "category": "alanfullbeard-lcars",
+  "description": "A portfolio case-study card with optional media, project metadata, and a call to action.",
+  "textdomain": "alanfullbeard-lcars",
+  "attributes": {
+    "eyebrow": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "meta": {
+      "type": "string",
+      "default": ""
+    },
+    "summary": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "imagePosition": {
+      "type": "string",
+      "default": "right"
+    },
+    "accent": {
+      "type": "string",
+      "default": "orange"
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "linkLabel": {
+      "type": "string",
+      "default": "Visit project"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "html": false
+  }
+}

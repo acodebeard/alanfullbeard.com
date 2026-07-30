@@ -1,0 +1,21 @@
+.editor-styles-wrapper .portfolio-card {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.editor-styles-wrapper .portfolio-card__media-editor {
+  display: grid;
+  gap: 10px;
+}
+
+.editor-styles-wrapper .portfolio-card__media-editor .components-button {
+  width: max-content;
+}
+
+.editor-styles-wrapper .portfolio-card__position-control {
+  margin-bottom: 16px;
+}
+
+.block-editor-block-inspector .portfolio-card__url-warning {
+  margin: 12px 0;
+}

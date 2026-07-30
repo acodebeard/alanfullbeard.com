@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+?>
+<header class="page-header">
+  <p class="eyebrow">404</p>
+  <h1>Page not found</h1>
+  <p>The page you requested does not exist.</p>
+</header>
+
+<section class="content-section">
+  <a href="/">Return home</a>
+</section>

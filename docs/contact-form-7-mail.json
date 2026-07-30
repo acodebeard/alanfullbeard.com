@@ -1,0 +1,10 @@
+{
+  "subject": "Website contact from [your-name]",
+  "sender": "[_site_title] <alan@alanfullbeard.com>",
+  "body": "Name: [your-name]\nEmail: [your-email]\nPhone: [your-phone]\nPermission to text: [your-text-permission]\n\nMessage:\n[your-message]\n\n-- \nSubmitted from [_site_title] ([_site_url])",
+  "recipient": "alanjfullmer@gmail.com",
+  "additional_headers": "Reply-To: [your-name] <[your-email]>",
+  "attachments": "",
+  "use_html": 0,
+  "exclude_blank": 0
+}

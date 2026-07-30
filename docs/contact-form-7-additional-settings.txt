@@ -1,0 +1,4 @@
+flamingo_email: "[your-email]"
+flamingo_name: "[your-name]"
+flamingo_subject: "Website contact from [your-name]"
+flamingo_message: "[your-message]"

@@ -1,0 +1,18 @@
+Alan Fullmer
+Tucson-based web developer
+
+Starter resume file. Replace this text file with the final PDF or resume document.
+
+Focus areas:
+- Accessible website development
+- UX and interface repair
+- Performance optimization
+- PHP, WordPress, front-end architecture, and custom plugins
+- Photography-informed visual detail
+
+Experience:
+- 14+ years in web development and design
+- 20+ years in photography
+
+Contact:
+alan@alanfullbeard.com

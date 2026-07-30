@@ -1,0 +1,21 @@
+includes:
+  - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+  level: 3
+  scanDirectories:
+    - wp-content/plugins/waypoints-trip-planner/src
+  scanFiles:
+    - wp-content/themes/alanfullbeard/inc/contact-form.php
+    - wp-content/mu-plugins/alanfullbeard-filehub.php
+    - wp-content/mu-plugins/alanfullbeard-contact-vault.php
+    - wp-content/mu-plugins/alanfullbeard-security-headers.php
+    - wp-content/plugins/flamingo/includes/class-contact.php
+    - wp-content/plugins/flamingo/includes/class-inbound-message.php
+    - deploy/contact-vault-backup-stream-lib.php
+    - deploy/migrate-hostgator-contact-vault.php
+    - deploy/purge-hostgator-flamingo-contacts.php
+  paths:
+    - app
+    - public
+    - tests

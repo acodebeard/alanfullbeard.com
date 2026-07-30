@@ -1,0 +1,390 @@
+@font-face {
+	font-family: "Noto Sans";
+	src: url("../fonts/noto-sans-v42-latin-ext-300.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Noto Sans";
+	src: url("../fonts/noto-sans-v42-latin-ext-regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Noto Sans";
+	src: url("../fonts/noto-sans-v42-latin-ext-700.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+.plan-your-day-admin-page {
+	font-family: "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	scroll-behavior: smooth;
+}
+
+.plan-your-day-admin-page input,
+.plan-your-day-admin-page select,
+.plan-your-day-admin-page textarea,
+.plan-your-day-admin-page button {
+	font-family: inherit;
+}
+
+.plan-your-day-admin-accordion {
+	display: grid;
+	gap: 0.65rem;
+	max-width: 72rem;
+	margin-top: 0.75rem;
+}
+
+.plan-your-day-admin-accordion__item {
+	margin: 0;
+	border: thin solid #ccd0d4;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(16, 24, 40, 0.08);
+	overflow: hidden;
+}
+
+.plan-your-day-admin-accordion__summary {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0.75rem;
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	list-style: none;
+}
+
+.plan-your-day-admin-accordion__summary::-webkit-details-marker {
+	display: none;
+}
+
+.plan-your-day-admin-accordion__summary::after {
+	content: "+";
+	flex: 0 0 auto;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1;
+	color: #1d2327;
+}
+
+.plan-your-day-admin-accordion__item[open] .plan-your-day-admin-accordion__summary::after {
+	content: "-";
+}
+
+.plan-your-day-admin-accordion__summary-copy {
+	display: grid;
+	gap: 0.2rem;
+}
+
+.plan-your-day-admin-accordion__title {
+	display: block;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.35;
+	color: #1d2327;
+}
+
+.plan-your-day-admin-accordion__description {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.4;
+	color: #50575e;
+}
+
+.plan-your-day-admin-accordion__panel {
+	padding: 0 1rem 1rem;
+	border-top: thin solid #e2e4e7;
+}
+
+.plan-your-day-interface-copy-group {
+	display: grid;
+	gap: 0.5rem;
+	max-width: 56rem;
+	padding-top: 0.75rem;
+}
+
+.plan-your-day-interface-copy-field {
+	padding: 0.55rem 0.65rem;
+	border: thin solid transparent;
+	border-radius: 8px;
+}
+
+.plan-your-day-interface-copy-field-label {
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	flex-wrap: wrap;
+	margin-bottom: 0.2rem;
+	font-weight: 600;
+}
+
+.plan-your-day-admin-page .form-table .plan-your-day-compact-checkbox-field > th {
+	width: 13rem;
+	max-width: 13rem;
+	padding-right: 1rem;
+}
+
+.plan-your-day-categories-editor {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.plan-your-day-categories-editor .widefat {
+	min-width: 62rem;
+	table-layout: auto;
+}
+
+.plan-your-day-category-order-col,
+.plan-your-day-category-enabled-col,
+.plan-your-day-category-delete-col {
+	width: 1%;
+}
+
+.plan-your-day-category-label-col {
+	width: 10rem;
+}
+
+.plan-your-day-category-query-col {
+	width: 14rem;
+}
+
+.plan-your-day-category-order-column {
+	width: 1%;
+}
+
+.plan-your-day-category-enabled-column {
+	width: 1%;
+}
+
+.plan-your-day-category-label-column {
+	width: 10rem;
+}
+
+.plan-your-day-category-query-column {
+	width: 14rem;
+}
+
+.plan-your-day-category-delete-column {
+	width: 1%;
+}
+
+.plan-your-day-category-order-column,
+.plan-your-day-category-enabled-column,
+.plan-your-day-category-delete-column,
+.plan-your-day-category-order-cell {
+	width: 1%;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.plan-your-day-categories-editor .plan-your-day-category-order-column,
+.plan-your-day-categories-editor .plan-your-day-category-enabled-column,
+.plan-your-day-categories-editor .plan-your-day-category-order-cell,
+.plan-your-day-categories-editor .plan-your-day-category-enabled-cell {
+	padding-right: 0.45rem;
+	padding-left: 0.45rem;
+}
+
+.plan-your-day-category-enabled-cell {
+	width: 1%;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.plan-your-day-category-label-cell input,
+.plan-your-day-category-description-cell textarea,
+.plan-your-day-category-query-cell input {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.plan-your-day-category-drag-handle {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2.25rem;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 4px;
+	background: transparent;
+	box-shadow: none;
+	color: #50575e;
+	cursor: grab;
+	position: relative;
+	vertical-align: middle;
+}
+
+.plan-your-day-category-drag-handle::before {
+	content: "";
+	display: block;
+	width: 18px;
+	height: 18px;
+	background-image: repeating-radial-gradient(circle, currentColor 0 2px, transparent 2.5px 100%);
+	background-position: center;
+	background-size:6px 6px;
+}
+
+.plan-your-day-category-drag-handle:hover {
+	color: #1d2327;
+}
+
+.plan-your-day-category-drag-handle:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.plan-your-day-category-row.is-dragging {
+	opacity: 0.55;
+}
+
+.plan-your-day-category-row.is-dragging .plan-your-day-category-drag-handle {
+	cursor: grabbing;
+}
+.plan-your-day-category-row.is-dragging .plan-your-day-category-drag-handle::before {
+	transform: scale(1.5);
+}
+.plan-your-day-category-delete-cell {
+	width: 1%;
+	white-space: nowrap;
+}
+
+.plan-your-day-add-category-action {
+	margin: 1rem 0 0.65rem;
+}
+
+.plan-your-day-add-category-button {
+	min-height: 2.5rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+	font-weight: 700;
+}
+
+.plan-your-day-categories-field {
+	display: block;
+}
+
+.plan-your-day-categories-field > th {
+	display: none;
+}
+
+.plan-your-day-categories-field > td {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding-left: 0;
+}
+
+.plan-your-day-api-key-field {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	max-width: 100%;
+}
+
+.plan-your-day-api-key-field input.regular-text {
+	max-width: min(32rem, calc(100vw - 12rem));
+}
+
+.plan-your-day-api-key-reveal {
+	position: relative;
+	display: inline-flex !important;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	min-width: 2.25rem;
+	height: 2rem;
+	padding: 0 !important;
+	line-height: 1;
+}
+
+.plan-your-day-api-key-reveal-icon {
+	position: relative;
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	color: currentColor;
+}
+
+.plan-your-day-api-key-reveal-icon::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0.9rem;
+	height: 0.9rem;
+	border: 2px solid currentColor;
+	border-radius: 75% 0;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.plan-your-day-api-key-reveal-icon::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0.35rem;
+	height: 0.35rem;
+	border-radius: 50%;
+	background: currentColor;
+	transform: translate(-50%, -50%);
+}
+
+.plan-your-day-api-key-reveal::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 1.35rem;
+	height: 2px;
+	background: currentColor;
+	transform: translate(-50%, -50%) rotate(-35deg);
+	transform-origin: center;
+}
+
+.plan-your-day-api-key-field.is-revealed .plan-your-day-api-key-reveal::after {
+	display: none;
+}
+
+.plan-your-day-api-key-field.is-revealed input.regular-text {
+	background: #fff8e5;
+}
+
+.plan-your-day-admin-back-to-top {
+	position: fixed;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	z-index: 1000;
+	opacity: 0;
+	transform: translateY(0.75rem);
+	pointer-events: none;
+	transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.plan-your-day-admin-back-to-top.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+@media (max-width: 782px) {
+	.plan-your-day-admin-accordion__summary,
+	.plan-your-day-admin-accordion__panel {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+
+	.plan-your-day-admin-back-to-top {
+		right: 1rem;
+		bottom: 1rem;
+	}
+}

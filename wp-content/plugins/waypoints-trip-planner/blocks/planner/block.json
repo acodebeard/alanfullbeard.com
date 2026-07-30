@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "waypoints/planner",
+	"title": "Waypoints: Trip Planner",
+	"category": "widgets",
+	"description": "Render the Waypoints: Trip Planner interface through the block editor.",
+	"textdomain": "waypoints-trip-planner",
+	"keywords": [
+		"planner",
+		"maps",
+		"waypoints"
+	],
+	"attributes": {
+		"actionUrl": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"editorScript": "waypoints-block-editor"
+}

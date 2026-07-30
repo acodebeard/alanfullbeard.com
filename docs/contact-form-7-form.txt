@@ -1,0 +1,33 @@
+<div class="contact-form__field">
+<label for="contact-name">Name <span class="contact-form__required">Required</span></label>
+[text* your-name id:contact-name maxlength:100 autocomplete:name]
+</div>
+
+<div class="contact-form__field">
+<label for="contact-email">Email <span class="contact-form__required">Required</span></label>
+[email* your-email id:contact-email maxlength:254 autocomplete:email]
+</div>
+
+<div class="contact-form__field">
+<label for="contact-phone">Phone <span class="contact-form__required">Optional</span></label>
+[tel your-phone id:contact-phone maxlength:30 autocomplete:tel]
+</div>
+
+<fieldset class="contact-form__field contact-form__field--choice" aria-describedby="contact-text-permission-help">
+<legend>Permission to text</legend>
+<p class="contact-form__field-help" id="contact-text-permission-help">Can Alan text you at this number? Carrier charges may apply.</p>
+[radio your-text-permission class:contact-form__choices use_label_element default:1 "No, please don't text me|No" "Yes, you can text me|Yes"]
+</fieldset>
+
+<div class="contact-form__field">
+<label for="contact-message">Message <span class="contact-form__required">Required</span></label>
+[textarea* your-message id:contact-message maxlength:5000 40x8]
+</div>
+
+<div class="contact-form__footer">
+<p id="contact-form-privacy">Submitting this form privately stores an encrypted copy in WordPress for spam review and follow-up for up to 180 days. The site may also attempt to send Alan an email notification. See the <a href="/privacy-policy/">Privacy Policy</a>.</p>
+<div class="contact-form__actions">
+<div class="contact-form__turnstile" role="group" aria-label="Security verification">[turnstile action:contact appearance:interaction-only size:compact theme:dark]</div>
+<div class="contact-form__submit">[submit "Send message"]</div>
+</div>
+</div>
