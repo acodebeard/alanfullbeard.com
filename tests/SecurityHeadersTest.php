@@ -7,11 +7,24 @@ const ABSPATH = __DIR__ . '/';
 /** @var array<string, list<callable|string>> */
 $securityHeaderFilters = [];
 
+/** @var array<string, list<array{callback: mixed, priority: int, accepted_args: int}>> */
+$securityHeaderActions = [];
+
 /** @var list<string> */
 $securityHeaderEnqueuedScripts = [];
 
-function add_action(): void
+function add_action(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void
 {
+    $GLOBALS['securityHeaderActions'][$hook][] = [
+        'callback' => $callback,
+        'priority' => $priority,
+        'accepted_args' => $acceptedArgs,
+    ];
 }
 
 function add_filter(

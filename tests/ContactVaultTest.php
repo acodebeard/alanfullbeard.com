@@ -11,18 +11,28 @@ $contactVaultMeta = [];
 /** @var array<int, bool> */
 $contactVaultDeleted = [];
 
-function add_action(string $hook, mixed $callback, int $priority = 10): void
-{
+function add_action(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void {
     global $contactVaultHooks;
+    unset($acceptedArgs);
     $contactVaultHooks[$hook][] = [
         'callback' => $callback,
         'priority' => $priority,
     ];
 }
 
-function add_filter(string $hook, mixed $callback, int $priority = 10): void
-{
+function add_filter(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void {
     add_action($hook, $callback, $priority);
+    unset($acceptedArgs);
 }
 
 function wp_json_encode(mixed $value, int $flags = 0): string|false

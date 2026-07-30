@@ -7,12 +7,14 @@ define('ALANFULLBEARD_FILEHUB_ROOT', '/private/filehub_data');
 
 $registeredHooks = [];
 
-/**
- * @param callable|string|array<mixed> $callback
- */
-function add_action(string $hook, callable|string|array $callback): void
-{
+function add_action(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void {
     global $registeredHooks;
+    unset($priority, $acceptedArgs);
     $registeredHooks[$hook] = $callback;
 }
 

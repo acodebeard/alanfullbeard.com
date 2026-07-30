@@ -17,6 +17,8 @@ $GLOBALS['waypoints_test_options'] = [];
 $GLOBALS['waypoints_test_shortcodes'] = [];
 $GLOBALS['waypoints_test_enqueued_styles'] = [];
 $GLOBALS['waypoints_test_enqueued_scripts'] = [];
+$GLOBALS['waypoints_test_actions'] = [];
+$GLOBALS['waypoints_test_filters'] = [];
 $GLOBALS['waypoints_unique_id'] = 0;
 
 function __($text, $domain = null): string
@@ -98,12 +100,32 @@ function update_option($name, $value): bool
     return true;
 }
 
-function add_action(): void
+function add_action(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void
 {
+    $GLOBALS['waypoints_test_actions'][$hook][] = [
+        'callback' => $callback,
+        'priority' => $priority,
+        'accepted_args' => $acceptedArgs,
+    ];
 }
 
-function add_filter(): void
+function add_filter(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void
 {
+    $GLOBALS['waypoints_test_filters'][$hook][] = [
+        'callback' => $callback,
+        'priority' => $priority,
+        'accepted_args' => $acceptedArgs,
+    ];
 }
 
 function register_setting(): void
