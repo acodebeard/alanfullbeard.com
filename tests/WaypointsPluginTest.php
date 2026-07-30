@@ -275,7 +275,7 @@ function waypoints_assert_contains(string $needle, string $haystack, string $mes
     waypoints_assert(str_contains($haystack, $needle), $message);
 }
 
-require_once $pluginRoot . '/vendor/autoload.php';
+require_once $root . '/vendor/autoload.php';
 
 use Acodebeard\PlanYourDay\Frontend\FrontendAssets;
 use Acodebeard\PlanYourDay\Frontend\PlannerRenderer;
