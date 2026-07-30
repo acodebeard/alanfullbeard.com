@@ -660,11 +660,11 @@ wp_setup_check('File Hub is administrator-only and stores files outside the webr
 wp_setup_check('HostGator deployment configuration preserves protected roots and blocks executable uploads', function () use ($root): void {
     $hostConfig = $root . '/deploy/hostgator-root.htaccess';
     $robotsConfig = $root . '/deploy/robots.txt';
-    $uploadConfig = $root . '/wp-content/uploads/.htaccess';
+    $uploadConfig = $root . '/deploy/hostgator-uploads.htaccess';
 
     wp_setup_assert(is_file($hostConfig), 'Missing reviewed HostGator root configuration.');
     wp_setup_assert(is_file($robotsConfig), 'Missing reviewed production robots.txt.');
-    wp_setup_assert(is_file($uploadConfig), 'Missing uploads execution guard.');
+    wp_setup_assert(is_file($uploadConfig), 'Missing reviewed uploads execution guard.');
 
     wp_setup_file_contains($hostConfig, 'RewriteCond %{REQUEST_FILENAME} -d', 'Existing protected directories should bypass WordPress routing.');
     wp_setup_file_contains($hostConfig, 'RewriteRule . /index.php [L]', 'Unknown main-domain routes should reach WordPress.');
