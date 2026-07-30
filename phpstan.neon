@@ -10,11 +10,10 @@ parameters:
     - wp-content/mu-plugins/alanfullbeard-filehub.php
     - wp-content/mu-plugins/alanfullbeard-contact-vault.php
     - wp-content/mu-plugins/alanfullbeard-security-headers.php
-    - wp-content/plugins/flamingo/includes/class-contact.php
-    - wp-content/plugins/flamingo/includes/class-inbound-message.php
     - deploy/contact-vault-backup-stream-lib.php
     - deploy/migrate-hostgator-contact-vault.php
     - deploy/purge-hostgator-flamingo-contacts.php
+    - stubs/flamingo.stub
   paths:
     - app
     - public

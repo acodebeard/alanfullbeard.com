@@ -660,11 +660,11 @@ wp_setup_check('File Hub is administrator-only and stores files outside the webr
 wp_setup_check('HostGator deployment configuration preserves protected roots and blocks executable uploads', function () use ($root): void {
     $hostConfig = $root . '/deploy/hostgator-root.htaccess';
     $robotsConfig = $root . '/deploy/robots.txt';
-    $uploadConfig = $root . '/wp-content/uploads/.htaccess';
+    $uploadConfig = $root . '/deploy/hostgator-uploads.htaccess';
 
     wp_setup_assert(is_file($hostConfig), 'Missing reviewed HostGator root configuration.');
     wp_setup_assert(is_file($robotsConfig), 'Missing reviewed production robots.txt.');
-    wp_setup_assert(is_file($uploadConfig), 'Missing uploads execution guard.');
+    wp_setup_assert(is_file($uploadConfig), 'Missing reviewed uploads execution guard.');
 
     wp_setup_file_contains($hostConfig, 'RewriteCond %{REQUEST_FILENAME} -d', 'Existing protected directories should bypass WordPress routing.');
     wp_setup_file_contains($hostConfig, 'RewriteRule . /index.php [L]', 'Unknown main-domain routes should reach WordPress.');
@@ -680,6 +680,45 @@ wp_setup_check('HostGator deployment configuration preserves protected roots and
     wp_setup_file_contains($uploadConfig, 'Options -Indexes', 'Uploads should not expose directory listings.');
     wp_setup_file_contains($uploadConfig, 'php[0-9]?', 'Uploads should block executable PHP variants.');
     wp_setup_file_contains($uploadConfig, 'Require all denied', 'Uploads should deny executable files under Apache 2.4.');
+
+    $uploadSource = file_get_contents($uploadConfig);
+    wp_setup_assert(is_string($uploadSource), 'Could not read the uploads execution guard.');
+
+    $uploadPatternMatch = [];
+    $patternFound = preg_match(
+        '/<FilesMatch "([^"]+)">/',
+        $uploadSource,
+        $uploadPatternMatch
+    );
+
+    wp_setup_assert(
+        $patternFound === 1
+            && isset($uploadPatternMatch[1])
+            && is_string($uploadPatternMatch[1]),
+        'Could not read the executable upload pattern.'
+    );
+
+    $uploadPattern = '~' . $uploadPatternMatch[1] . '~i';
+
+    foreach ([
+        'payload.php',
+        'payload.php.jpg',
+        'payload.php8.webp',
+        'payload.phtml.txt',
+        'payload.phar.gif',
+    ] as $filename) {
+        wp_setup_assert(
+            preg_match($uploadPattern, $filename) === 1,
+            "Uploads should block executable filename {$filename}."
+        );
+    }
+
+    foreach (['portrait.jpg', 'archive.tar.gz', 'document.pdf'] as $filename) {
+        wp_setup_assert(
+            preg_match($uploadPattern, $filename) === 0,
+            "Uploads should allow non-executable filename {$filename}."
+        );
+    }
 });
 
 if ($failures > 0) {

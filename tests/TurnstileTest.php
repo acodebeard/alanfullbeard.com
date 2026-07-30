@@ -4,6 +4,12 @@ declare(strict_types=1);
 
 final class TurnstileTestState
 {
+    /** @var array<string, list<array{callback: mixed, priority: int, accepted_args: int}>> */
+    public static array $actions = [];
+
+    /** @var array<string, list<array{callback: mixed, priority: int, accepted_args: int}>> */
+    public static array $registeredFilters = [];
+
     /** @var array<string, string> */
     public static array $filters = [
         'viazen_mailersend_smtp_turnstile_site_key' => '',
@@ -11,12 +17,32 @@ final class TurnstileTestState
     ];
 }
 
-function add_action(): void
+function add_action(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void
 {
+    TurnstileTestState::$actions[$hook][] = [
+        'callback' => $callback,
+        'priority' => $priority,
+        'accepted_args' => $acceptedArgs,
+    ];
 }
 
-function add_filter(): void
+function add_filter(
+    string $hook,
+    mixed $callback,
+    int $priority = 10,
+    int $acceptedArgs = 1
+): void
 {
+    TurnstileTestState::$registeredFilters[$hook][] = [
+        'callback' => $callback,
+        'priority' => $priority,
+        'accepted_args' => $acceptedArgs,
+    ];
 }
 
 function apply_filters(string $tag, mixed $value, mixed ...$arguments): mixed

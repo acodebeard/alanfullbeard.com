@@ -1,0 +1,25 @@
+<?php
+
+class Flamingo_Contact
+{
+    /**
+     * @param array<string, mixed>|string $args
+     */
+    public static function add($args = ''): ?self
+    {
+    }
+}
+
+class Flamingo_Inbound_Message
+{
+    /**
+     * @param array<string, mixed>|string $args
+     */
+    public static function add($args = ''): self
+    {
+    }
+
+    public function id(): int
+    {
+    }
+}
