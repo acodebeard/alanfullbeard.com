@@ -22,7 +22,7 @@ readonly -a AFB_CANDIDATES=(
     "contact-vault-decrypt-backup.php|3e411b16ef1eba083116dc56608803ae4a8b89561fd4e78e7c1f1a1d1a47e156"
     "contact-vault-encrypt-backup.php|37162280afa6195f9aed8769a7dcf04972b7227474514261292a9131ac7a3c41"
     "hostgator-portfolio-page-content.html|660716cd0c61c0348c12bfc24e198264d9694df0622cd76721825e0d5f8d1a74"
-    "hostgator-portfolio-page-lib.php|30ef12b8b92ddf05d9fe24f6824c8b8de2238e22e651c96b8e5ce7d6d720d11b"
+    "hostgator-portfolio-page-lib.php|dbb9f8d8084e5627acb19010c14172f68d72ba0a8754886ebddd42404a3f5654"
     "dry-run-hostgator-portfolio-page.php|696d549f3de165fada9b9c3ee34f7d81f1541fa4607fc455957ae0320885d1dd"
     "create-hostgator-portfolio-page.php|9c5d1e36b10f1c60dc76831ece4a4d14ca9a348c711a6a2e206821c32978fc34"
     "rollback-hostgator-portfolio-page.php|b3c645de9f3498b4ce6fcb5c83c7fb7652a513278cd25b94f12dfc839f5dc868"

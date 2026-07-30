@@ -445,6 +445,18 @@ wp_setup_check('web portfolio page uses a dedicated LCARS template and custom bl
     wp_setup_file_contains($template, 'portfolio-page__content', 'Web Portfolio template should wrap block content for portfolio layout.');
 });
 
+wp_setup_check('Portfolio migration validates the alt text used by its blocks', function () use ($root): void {
+    $migration = $root . '/deploy/hostgator-portfolio-page-lib.php';
+
+    wp_setup_assert(is_file($migration), 'Missing guarded Portfolio migration library.');
+    wp_setup_file_contains($migration, "'imageAlt' => 'Screenshot of the Phoenix New Times website'", 'Migration should pin the reviewed New Times block alternative text.');
+    wp_setup_file_contains($migration, "(\$block['attrs']['imageAlt'] ?? null) !== \$expectedCard['imageAlt']", 'Migration should validate block-level alternative text.');
+    wp_setup_assert(
+        ! str_contains((string) file_get_contents($migration), "'_wp_attachment_image_alt'"),
+        'Migration should not depend on attachment metadata that the renderer overrides.'
+    );
+});
+
 wp_setup_check('front page odometer animates once per years value', function () use ($root): void {
     $template = $root . '/wp-content/themes/alanfullbeard/front-page.php';
     $functions = $root . '/wp-content/themes/alanfullbeard/functions.php';
