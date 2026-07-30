@@ -1,0 +1,12 @@
+wp-content/themes/alanfullbeard/assets/images/portfolio-screenshot-placeholder.svg
+wp-content/themes/alanfullbeard/blocks/portfolio-card/block.json
+wp-content/themes/alanfullbeard/blocks/portfolio-card/editor.css
+wp-content/themes/alanfullbeard/blocks/portfolio-card/index.js
+wp-content/themes/alanfullbeard/blocks/portfolio-card/style.css
+wp-content/themes/alanfullbeard/blocks/portfolio-card/style.min.css
+wp-content/themes/alanfullbeard/front-page.php
+wp-content/themes/alanfullbeard/functions.php
+wp-content/themes/alanfullbeard/inc/portfolio-blocks.php
+wp-content/themes/alanfullbeard/style.css
+wp-content/themes/alanfullbeard/style.min.css
+wp-content/mu-plugins/new-tab-dammit.php
