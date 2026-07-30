@@ -4,6 +4,7 @@ const publicPages = [
   ['Home', './'],
   ['Contact', './contact/'],
   ['Privacy Policy', './privacy-policy/'],
+  ['Portfolio', './portfolio/'],
 ];
 
 for (const [pageName, pagePath] of publicPages) {
